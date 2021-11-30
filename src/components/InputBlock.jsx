@@ -3,7 +3,7 @@ import dollarIcon from "../images/icon-dollar.svg";
 import personIcon from "../images/icon-person.svg";
 import Button from "./Button";
 
-const InputBlock = () => {
+const InputBlock = ({ billValue, inputChange }) => {
   return (
     <div className="input">
       <div className="bill-container">
@@ -17,6 +17,8 @@ const InputBlock = () => {
             name="inp-bill"
             id="inp-bill"
             placeholder="0.0"
+            value={billValue}
+            onChange={inputChange}
           />
           <img src={dollarIcon} alt="dollar icon" />
         </div>
