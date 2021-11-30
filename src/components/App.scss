@@ -1,3 +1,5 @@
+//variables
+
 $strong-cyan: hsl(172, 67%, 45%);
 $very-dark-cyan: hsl(183, 100%, 15%);
 $dark-grayish-cyan-1: hsl(186, 14%, 43%);
@@ -7,30 +9,224 @@ $light-grayish-cyan-2: hsl(189, 41%, 97%);
 $white: hsl(0, 0%, 100%);
 $btn-hover: rgb(159, 232, 223);
 
+//general styling
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 html {
-  font-size: 24px;
+  font-size: 62%;
 }
 
 body {
   font-family: "Space Mono", monospace;
+  background-color: $light-grayish-cyan-1;
+}
+// working space styles
+
+.container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
-.App {
-  text-align: center;
+.logo {
+  margin: 5rem 0 3.5rem 0;
 }
+.card {
+  background-color: $white;
+  width: 100%;
+  border-top-left-radius: 2.5rem;
+  border-top-right-radius: 2.5rem;
+  padding: 2.5rem;
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  gap: 3rem;
+
+  .input {
+    // border: 1px solid magenta; // tmp
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+
+    .label-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.6rem 0;
+
+      label {
+        color: $dark-grayish-cyan-1;
+        font-size: 1.5rem;
+        font-weight: 700;
+      }
+      .error-msg {
+        color: indianred;
+        font-weight: 700;
+        font-size: 1.5rem;
+      }
+    }
+    .inp-text {
+      background-color: $light-grayish-cyan-2;
+      border: none;
+      width: 100%;
+      border-radius: 0.5rem;
+      color: $very-dark-cyan;
+      font-family: inherit;
+      font-size: 2.4rem;
+      font-weight: 700;
+      text-align: right;
+      padding: 0.5rem 2.4rem;
+
+      &:focus {
+        outline: none;
+        border: 2px solid $strong-cyan;
+      }
+    }
+    .inp-wrapper {
+      position: relative;
+      img {
+        position: absolute;
+        left: 2.4rem;
+        top: 1.5rem;
+      }
+    }
+    .button-wraper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      //border: 1px solid black; // tmp
+      padding-top: 1.2rem;
+
+      .btn {
+        //display: block;
+        width: 46%;
+        text-align: center;
+        border: none;
+        background-color: $very-dark-cyan;
+        color: $white;
+        font-size: 2.4rem;
+        font-weight: 700;
+        border-radius: 0.5rem;
+        padding: 0.6rem 0;
+        transition: all 0.5s ease;
+
+        &:hover {
+          background-color: $btn-hover;
+        }
+      }
+      .btn-active {
+        background-color: $strong-cyan;
+        color: $very-dark-cyan;
+      }
+      .inp-text {
+        width: 46%;
+      }
+    }
+  }
+  .output {
+    background-color: $very-dark-cyan;
+    width: 100%;
+    border-radius: 1.5rem;
+    padding: 2.2rem;
+    .lines-wrapper {
+      .line-output {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 1.4rem 0 2.4rem 0;
+
+        .title {
+          color: $white;
+          font-weight: 700;
+          font-size: 1.6rem;
+        }
+        .desc {
+          color: $dark-grayish-cyan-2;
+          font-weight: 700;
+          font-size: 1.3rem;
+        }
+        .value {
+          color: $strong-cyan;
+          font-weight: 700;
+          font-size: 3rem;
+        }
+      }
+    }
+    .btn-reset {
+      width: 100%;
+      background-color: $strong-cyan;
+      text-transform: uppercase;
+      text-align: center;
+      border: none;
+      color: $very-dark-cyan;
+      font-size: 2rem;
+      font-weight: 700;
+      border-radius: 0.5rem;
+      padding: 1rem 0;
+      margin-top: 3.4rem;
+      transition: all 0.5s ease;
+
+      &:hover {
+        background-color: $btn-hover;
+      }
+    }
+  }
+}
+
+//1440px styles
+@media screen and (min-width: 1440px) {
+  .card {
+    width: 64%;
+    flex-direction: row;
+    align-items: stretch;
+    border-radius: 2.5rem;
+    padding: 3.4rem;
+    gap: 1.5rem;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.05),
+      0px 20px 30px rgba(0, 0, 0, 0.05);
+  }
+
+  .input {
+    width: 105%;
+    padding: 0 3.5rem 1.5rem 1.5rem;
+    s .label-wrapper {
+      padding: 1rem 0;
+    }
+
+    .button-wraper {
+      .btn {
+        width: 30.5%;
+      }
+      .inp-text {
+        width: 30.5%;
+      }
+    }
+  }
+
+  .output {
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 4rem;
+
+    .lines-wrapper {
+      .line-output {
+        margin: 0.5rem 0 2.4rem 0;
+        .value {
+          font-size: 4.6rem;
+        }
+      }
+    }
+  }
 }
