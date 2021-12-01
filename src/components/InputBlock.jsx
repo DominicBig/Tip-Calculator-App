@@ -1,12 +1,25 @@
-import React, { useState,  } from "react";
+import React, { useEffect } from "react";
 import dollarIcon from "../images/icon-dollar.svg";
 import personIcon from "../images/icon-person.svg";
 import Button from "./Button";
 
-const InputBlock = ({ billValue, inputChange, totalValue, setTotal }) => {
+const InputBlock = (props) => {
+  const {
+    billValue,
+    inputChange,
+    peopleQty,
+    setTip,
+    peopleQtyChange,
+    setBtnActive,
+    btnActive,
+  } = props;
+
   const buttonClickHandler = (e) => {
-    let tipValue = parseFloat(e.target.innerHTML) / 100; // find tips persentage
-    setTotal(billValue + tipValue * billValue);
+    setTip(parseFloat(e.target.innerHTML) / 100); // find tips persentage
+    //setBtnActive(true);
+    e.currentTarget.className = "btn btn-active";
+    // setBtnActive(false);
+    // e.currentTarget.className = "btn ";
   };
 
   return (
@@ -34,13 +47,13 @@ const InputBlock = ({ billValue, inputChange, totalValue, setTotal }) => {
           <label htmlFor="inp-tips">Select Tip %</label>
         </div>
         <div className="button-wraper">
-          <Button styleName="btn" value="5%" onClick={buttonClickHandler} />
-          <Button styleName="btn " value="10%" onClick={buttonClickHandler} />
           <Button
-            styleName="btn btn-active"
-            value="15%"
+            styleName={btnActive ? "btn btn-active" : "btn"}
+            value="5%"
             onClick={buttonClickHandler}
           />
+          <Button styleName="btn" value="10%" onClick={buttonClickHandler} />
+          <Button styleName="btn" value="15%" onClick={buttonClickHandler} />
           <Button styleName="btn" value="25%" onClick={buttonClickHandler} />
           <Button styleName="btn" value="50%" onClick={buttonClickHandler} />
 
@@ -56,15 +69,16 @@ const InputBlock = ({ billValue, inputChange, totalValue, setTotal }) => {
       <div className="people-container">
         <div className="label-wrapper">
           <label htmlFor="inp-people">Number of People</label>
-          <div className="error-msg">Can`t be zero </div>
+          {peopleQty <= 0 && <div className="error-msg">Can`t be zero</div>}
         </div>
         <div className="inp-wrapper">
           <input
-            type="text"
+            type="number"
             className="inp-text"
             name="inp-people"
             id="inp-people"
-            placeholder="1"
+            value={+peopleQty}
+            onChange={peopleQtyChange}
           />
           <img src={personIcon} alt="person icon" />
         </div>

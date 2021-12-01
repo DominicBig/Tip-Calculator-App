@@ -1,7 +1,7 @@
 import React from "react";
 import Button from "./Button";
 
-const OutPutBlock = ({ totalValue }) => {
+const OutPutBlock = ({ totalValue, tipsValue, resetHandler, peopleQty }) => {
   return (
     <div className="output">
       <div className="lines-wrapper">
@@ -10,7 +10,7 @@ const OutPutBlock = ({ totalValue }) => {
             <div className="title">Tip Amount </div>
             <div className="desc">/ person</div>
           </div>
-          <div className="value">$4.27</div>
+          <div className="value">$ {peopleQty && tipsValue}</div>
         </div>
 
         <div className="line-output">
@@ -18,10 +18,10 @@ const OutPutBlock = ({ totalValue }) => {
             <div className="title">Total </div>
             <div className="desc">/ person</div>
           </div>
-          <div className="value">$ {totalValue}</div>
+          <div className="value">$ {peopleQty && totalValue}</div>
         </div>
       </div>
-      <Button styleName="btn-reset" value="Reset" />
+      <Button styleName="btn-reset" value="Reset" onClick={resetHandler} />
     </div>
   );
 };
