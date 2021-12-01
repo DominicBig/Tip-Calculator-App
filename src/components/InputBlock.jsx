@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import dollarIcon from "../images/icon-dollar.svg";
 import personIcon from "../images/icon-person.svg";
 import Button from "./Button";
@@ -10,7 +10,7 @@ const InputBlock = (props) => {
     peopleQty,
     setTip,
     peopleQtyChange,
-    setBtnActive,
+    //setBtnActive,
     btnActive,
   } = props;
 
@@ -20,6 +20,9 @@ const InputBlock = (props) => {
     e.currentTarget.className = "btn btn-active";
     // setBtnActive(false);
     // e.currentTarget.className = "btn ";
+
+    // Need to work on Active styled button
+    //Add logic to custom tip%
   };
 
   return (
