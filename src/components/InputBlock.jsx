@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useState,  } from "react";
 import dollarIcon from "../images/icon-dollar.svg";
 import personIcon from "../images/icon-person.svg";
 import Button from "./Button";
 
-const InputBlock = ({ billValue, inputChange }) => {
+const InputBlock = ({ billValue, inputChange, totalValue, setTotal }) => {
   const buttonClickHandler = (e) => {
     let tipValue = parseFloat(e.target.innerHTML) / 100; // find tips persentage
+    setTotal(billValue + tipValue * billValue);
   };
 
   return (

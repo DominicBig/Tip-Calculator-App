@@ -6,7 +6,8 @@ import OutPutBlock from "./OutPutBlock";
 
 function App() {
   const [billValue, setBillValue] = useState("");
-  console.log(billValue);
+  const [totalValue, setTotal] = useState("");
+  const [tipsValue, setTipsValue] = useState("");
 
   return (
     <div className="container">
@@ -16,10 +17,12 @@ function App() {
       <div className="card">
         <InputBlock
           billValue={billValue}
+          totalValue={totalValue}
+          setTotal={setTotal}
           setBillValue={setBillValue}
           inputChange={(e) => setBillValue(parseFloat(e.target.value))}
         />
-        <OutPutBlock billValue={billValue} />
+        <OutPutBlock totalValue={totalValue} />
       </div>
     </div>
   );
