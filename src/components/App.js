@@ -17,7 +17,7 @@ function App() {
         <InputBlock
           billValue={billValue}
           setBillValue={setBillValue}
-          inputChange={(e) => setBillValue(e.target.value)}
+          inputChange={(e) => setBillValue(parseFloat(e.target.value))}
         />
         <OutPutBlock billValue={billValue} />
       </div>

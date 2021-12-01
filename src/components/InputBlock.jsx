@@ -4,6 +4,10 @@ import personIcon from "../images/icon-person.svg";
 import Button from "./Button";
 
 const InputBlock = ({ billValue, inputChange }) => {
+  const buttonClickHandler = (e) => {
+    let tipValue = parseFloat(e.target.innerHTML) / 100; // find tips persentage
+  };
+
   return (
     <div className="input">
       <div className="bill-container">
@@ -29,11 +33,15 @@ const InputBlock = ({ billValue, inputChange }) => {
           <label htmlFor="inp-tips">Select Tip %</label>
         </div>
         <div className="button-wraper">
-          <Button styleName="btn" value="5%" />
-          <Button styleName="btn " value="10%" />
-          <Button styleName="btn btn-active" value="15%" />
-          <Button styleName="btn" value="25%" />
-          <Button styleName="btn" value="50%" />
+          <Button styleName="btn" value="5%" onClick={buttonClickHandler} />
+          <Button styleName="btn " value="10%" onClick={buttonClickHandler} />
+          <Button
+            styleName="btn btn-active"
+            value="15%"
+            onClick={buttonClickHandler}
+          />
+          <Button styleName="btn" value="25%" onClick={buttonClickHandler} />
+          <Button styleName="btn" value="50%" onClick={buttonClickHandler} />
 
           <input
             type="text"
