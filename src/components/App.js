@@ -17,7 +17,6 @@ function App() {
   };
 
   const peopleChangeHandler = (e) => {
-    console.log(e.target.value);
     setPeopleQty(parseFloat(e.target.value));
 
     let tips = ((tip * billValue) / peopleQty).toFixed(2); // tips per person amount
@@ -27,7 +26,6 @@ function App() {
   };
   const customTipsValueHandler = (e) => {
     if (e.target.value !== "") {
-      console.log(e.target.value);
       setTip(parseFloat(e.target.value) / 100);
     }
   };
