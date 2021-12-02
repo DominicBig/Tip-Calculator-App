@@ -79,6 +79,7 @@ const InputBlock = (props) => {
             id="inp-people"
             value={+peopleQty}
             onChange={peopleQtyChange}
+            placeholder="0.0"
           />
           <img src={personIcon} alt="person icon" />
         </div>

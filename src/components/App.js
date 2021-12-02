@@ -5,9 +5,9 @@ import InputBlock from "./InputBlock";
 import OutPutBlock from "./OutPutBlock";
 
 function App() {
-  const [billValue, setBillValue] = useState(0);
+  const [billValue, setBillValue] = useState("");
   const [totalValue, setTotal] = useState("");
-  const [tipsValue, setTipsValue] = useState(0);
+  const [tipsValue, setTipsValue] = useState("");
   const [peopleQty, setPeopleQty] = useState("");
   const [tip, setTip] = useState(0);
   const [customTip, setCustomTip] = useState(null);
