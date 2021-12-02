@@ -6,23 +6,23 @@ import Button from "./Button";
 const InputBlock = (props) => {
   const {
     billValue,
-    inputChange,
     peopleQty,
     setTip,
+    inputChange,
     peopleQtyChange,
-    //setBtnActive,
-    btnActive,
+    customTipsChange,
   } = props;
 
   const buttonClickHandler = (e) => {
-    setTip(parseFloat(e.target.innerHTML) / 100); // find tips persentage
-    //setBtnActive(true);
-    e.currentTarget.className = "btn btn-active";
-    // setBtnActive(false);
-    // e.currentTarget.className = "btn ";
+    document
+      .querySelectorAll(".btn")
+      .forEach((btn) => btn.classList.remove("btn-active"));
 
-    // Need to work on Active styled button
-    //Add logic to custom tip%
+    if (e.target.className === "btn") {
+      console.log("btn works");
+      setTip(parseFloat(e.target.innerHTML) / 100); // find tips persentage
+      e.target.className = "btn btn-active";
+    }
   };
 
   return (
@@ -49,16 +49,12 @@ const InputBlock = (props) => {
         <div className="label-wrapper">
           <label htmlFor="inp-tips">Select Tip %</label>
         </div>
-        <div className="button-wraper">
-          <Button
-            styleName={btnActive ? "btn btn-active" : "btn"}
-            value="5%"
-            onClick={buttonClickHandler}
-          />
-          <Button styleName="btn" value="10%" onClick={buttonClickHandler} />
-          <Button styleName="btn" value="15%" onClick={buttonClickHandler} />
-          <Button styleName="btn" value="25%" onClick={buttonClickHandler} />
-          <Button styleName="btn" value="50%" onClick={buttonClickHandler} />
+        <div className="button-wraper" onClick={buttonClickHandler}>
+          <Button styleName="btn" value="5%" />
+          <Button styleName="btn" value="10%" />
+          <Button styleName="btn" value="15%" />
+          <Button styleName="btn" value="25%" />
+          <Button styleName="btn" value="50%" />
 
           <input
             type="text"
@@ -66,6 +62,7 @@ const InputBlock = (props) => {
             name="inp-tip"
             id="inp-tip"
             placeholder="Custom"
+            onChange={customTipsChange}
           />
         </div>
       </div>

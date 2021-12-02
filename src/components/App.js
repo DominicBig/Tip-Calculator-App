@@ -7,23 +7,29 @@ import OutPutBlock from "./OutPutBlock";
 function App() {
   const [billValue, setBillValue] = useState(0);
   const [totalValue, setTotal] = useState("");
-  const [tipsValue, setTipsValue] = useState("");
-  const [peopleQty, setPeopleQty] = useState(1);
-  const [btnActive, setBtnActive] = useState(false);
+  const [tipsValue, setTipsValue] = useState(0);
+  const [peopleQty, setPeopleQty] = useState("");
+  const [tip, setTip] = useState(0);
+  const [customTip, setCustomTip] = useState(null);
 
-  const [tip, setTip] = useState(0.05);
+  const inputChangeHandler = (e) => {
+    setBillValue(parseFloat(e.target.value));
+  };
 
   const peopleChangeHandler = (e) => {
+    console.log(e.target.value);
     setPeopleQty(parseFloat(e.target.value));
 
-    let total = ((billValue + tip * billValue) / +peopleQty).toFixed(2); // total amount
     let tips = ((tip * billValue) / peopleQty).toFixed(2); // tips per person amount
-    console.log(tip);
-    console.log(total);
-    console.log(tips);
-
+    let total = ((billValue + +tips) / peopleQty).toFixed(2); // total amount
     setTotal(total);
     setTipsValue(tips);
+  };
+  const customTipsValueHandler = (e) => {
+    if (e.target.value !== "") {
+      console.log(e.target.value);
+      setTip(parseFloat(e.target.value) / 100);
+    }
   };
 
   return (
@@ -33,17 +39,12 @@ function App() {
       </div>
       <div className="card">
         <InputBlock
-          setTip={setTip}
           billValue={billValue}
-          setTipsValue={setTipsValue}
-          setTotal={setTotal}
           peopleQty={peopleQty}
-          setBillValue={setBillValue}
-          setPeopleQty={setPeopleQty}
-          btnActive={btnActive}
-          setBtnActive={setBtnActive}
-          inputChange={(e) => setBillValue(parseFloat(e.target.value))}
+          setTip={setTip}
+          inputChange={inputChangeHandler}
           peopleQtyChange={peopleChangeHandler}
+          customTipsChange={customTipsValueHandler}
         />
         <OutPutBlock
           totalValue={totalValue}
@@ -54,6 +55,7 @@ function App() {
             setTotal("");
             setTipsValue("");
             setPeopleQty(0);
+            setCustomTip(null);
           }}
         />
       </div>
