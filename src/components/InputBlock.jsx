@@ -141,7 +141,7 @@ const InputBlock = () => {
           </div>
           <div className="inp-wrapper">
             <input
-              type="text"
+              type="number"
               className="inp-text"
               name="inp-people"
               id="inp-people"
